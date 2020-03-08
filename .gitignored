@@ -1,0 +1,18 @@
+###> symfony/framework-bundle ###
+FinatialTrackingApp/.env.local
+FinatialTrackingApp/.env.local.php
+FinatialTrackingApp/.env.*.local
+FinatialTrackingApp/config/secrets/prod/prod.decrypt.private.php
+FinatialTrackingApp/public/bundles/
+FinatialTrackingApp/var/
+FinatialTrackingApp/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+FinatialTrackingApp/phpunit.xml
+###< symfony/phpunit-bridge ###
+FinatialTrackingApp/.env.local.env
+
+
