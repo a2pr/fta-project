@@ -34,9 +34,15 @@ class Funds
      */
     private $subFunds;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Incomes", mappedBy="id_fund")
+     */
+    private $incomes;
+
     public function __construct()
     {
         $this->subFunds = new ArrayCollection();
+        $this->incomes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -93,6 +99,37 @@ class Funds
             // set the owning side to null (unless already changed)
             if ($subFund->getIdFunds() === $this) {
                 $subFund->setIdFunds(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Incomes[]
+     */
+    public function getIncomes(): Collection
+    {
+        return $this->incomes;
+    }
+
+    public function addIncome(Incomes $income): self
+    {
+        if (!$this->incomes->contains($income)) {
+            $this->incomes[] = $income;
+            $income->setIdFund($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIncome(Incomes $income): self
+    {
+        if ($this->incomes->contains($income)) {
+            $this->incomes->removeElement($income);
+            // set the owning side to null (unless already changed)
+            if ($income->getIdFund() === $this) {
+                $income->setIdFund(null);
             }
         }
 

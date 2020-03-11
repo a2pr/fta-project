@@ -53,11 +53,17 @@ class Users
      */
     private $subFunds;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Transactions", mappedBy="id_users")
+     */
+    private $transactions;
+
     public function __construct()
     {
         $this->banks = new ArrayCollection();
         $this->funds = new ArrayCollection();
         $this->subFunds = new ArrayCollection();
+        $this->transactions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,6 +206,37 @@ class Users
             // set the owning side to null (unless already changed)
             if ($subFund->getIdUser() === $this) {
                 $subFund->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transactions[]
+     */
+    public function getTransactions(): Collection
+    {
+        return $this->transactions;
+    }
+
+    public function addTransaction(Transactions $transaction): self
+    {
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions[] = $transaction;
+            $transaction->setIdUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransaction(Transactions $transaction): self
+    {
+        if ($this->transactions->contains($transaction)) {
+            $this->transactions->removeElement($transaction);
+            // set the owning side to null (unless already changed)
+            if ($transaction->getIdUsers() === $this) {
+                $transaction->setIdUsers(null);
             }
         }
 

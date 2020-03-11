@@ -6,8 +6,9 @@ FinatialTrackingApp/config/secrets/prod/prod.decrypt.private.php
 FinatialTrackingApp/public/bundles/
 FinatialTrackingApp/var/
 FinatialTrackingApp/vendor/
+FinatialTrackingApp/.idea
 ###< symfony/framework-bundle ###
-
+.idea/*
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
