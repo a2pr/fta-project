@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\User;
 
 /**
  * @method Users|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,22 @@ class UsersRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param $email
+     * @return Users|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findUserByEmail($email, $pass): ?Users
+    {
+        $hash= md5($pass);
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :val')
+            ->andWhere('u.password = :pass')
+            ->setParameter('val', $email)
+            ->setParameter('pass', $hash)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }
