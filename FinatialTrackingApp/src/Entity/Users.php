@@ -58,6 +58,11 @@ class Users
      */
     private $transactions;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dtc;
+
     public function __construct()
     {
         $this->banks = new ArrayCollection();
@@ -239,6 +244,18 @@ class Users
                 $transaction->setIdUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDtc(): ?\DateTimeInterface
+    {
+        return $this->dtc;
+    }
+
+    public function setDtc(\DateTimeInterface $dtc): self
+    {
+        $this->dtc = $dtc;
 
         return $this;
     }

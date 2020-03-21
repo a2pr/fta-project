@@ -49,6 +49,16 @@ class Incomes
      */
     private $id_bank;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dtc;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dtm;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +132,30 @@ class Incomes
     public function setIdBank(?UsersBanks $id_bank): self
     {
         $this->id_bank = $id_bank;
+
+        return $this;
+    }
+
+    public function getDtc(): ?\DateTimeInterface
+    {
+        return $this->dtc;
+    }
+
+    public function setDtc(\DateTimeInterface $dtc): self
+    {
+        $this->dtc = $dtc;
+
+        return $this;
+    }
+
+    public function getDtm(): ?\DateTimeInterface
+    {
+        return $this->dtm;
+    }
+
+    public function setDtm(\DateTimeInterface $dtm): self
+    {
+        $this->dtm = $dtm;
 
         return $this;
     }

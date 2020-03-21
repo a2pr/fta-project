@@ -45,6 +45,16 @@ class SubFunds
      */
     private $expenses;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dtc;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dtm;
+
     public function __construct()
     {
         $this->incomes = new ArrayCollection();
@@ -150,6 +160,30 @@ class SubFunds
                 $expense->setIdFund(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDtc(): ?\DateTimeInterface
+    {
+        return $this->dtc;
+    }
+
+    public function setDtc(\DateTimeInterface $dtc): self
+    {
+        $this->dtc = $dtc;
+
+        return $this;
+    }
+
+    public function getDtm(): ?\DateTimeInterface
+    {
+        return $this->dtm;
+    }
+
+    public function setDtm(\DateTimeInterface $dtm): self
+    {
+        $this->dtm = $dtm;
 
         return $this;
     }

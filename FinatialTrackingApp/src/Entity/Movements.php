@@ -54,6 +54,16 @@ class Movements
      */
     private $id_bank_arrival;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dtc;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dtm;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +149,30 @@ class Movements
     public function setIdBankArrival(?UsersBanks $id_bank_arrival): self
     {
         $this->id_bank_arrival = $id_bank_arrival;
+
+        return $this;
+    }
+
+    public function getDtc(): ?\DateTimeInterface
+    {
+        return $this->dtc;
+    }
+
+    public function setDtc(\DateTimeInterface $dtc): self
+    {
+        $this->dtc = $dtc;
+
+        return $this;
+    }
+
+    public function getDtm(): ?\DateTimeInterface
+    {
+        return $this->dtm;
+    }
+
+    public function setDtm(\DateTimeInterface $dtm): self
+    {
+        $this->dtm = $dtm;
 
         return $this;
     }
