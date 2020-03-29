@@ -54,13 +54,14 @@ class UsersRepository extends ServiceEntityRepository
      * @return Users|null
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findUserByEmail($email, $pass): ?Users
+    public function findUserByLogin( Users $user): ?Users
     {
-        $hash= md5($pass);
+
+        $hash= md5($user->getPassword());
         return $this->createQueryBuilder('u')
             ->andWhere('u.email = :val')
             ->andWhere('u.password = :pass')
-            ->setParameter('val', $email)
+            ->setParameter('val', $user->getEmail())
             ->setParameter('pass', $hash)
             ->getQuery()
             ->getOneOrNullResult()
