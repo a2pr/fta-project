@@ -8,7 +8,7 @@ FinatialTrackingApp/var/
 FinatialTrackingApp/vendor/
 FinatialTrackingApp/.idea
 ###< symfony/framework-bundle ###
-.idea/*
+.idea/
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
