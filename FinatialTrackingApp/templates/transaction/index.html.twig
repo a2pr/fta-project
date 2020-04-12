@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% include 'header.html.twig' %}
+    <div class="container mt-5">
+        <div class="card text-center">
+            <div class="card-body">
+                {{ form(form) }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
