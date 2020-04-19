@@ -19,7 +19,7 @@ class UsersBanks
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="banks")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="banks")
      * @ORM\JoinColumn(nullable=false)
      */
     private $id_user;

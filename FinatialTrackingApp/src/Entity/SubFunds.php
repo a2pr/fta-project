@@ -19,7 +19,7 @@ class SubFunds
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="subFunds")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="subFunds")
      * @ORM\JoinColumn(nullable=false)
      */
     private $id_user;

@@ -24,7 +24,7 @@ class Transactions
     private $Date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="transactions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $id_users;
@@ -140,12 +140,12 @@ class Transactions
         return $this;
     }
 
-    public function getIncomes(): ?Incomes
+    public function getIncomeId(): ?Incomes
     {
-        return $this->incomes;
+        return $this->id_incomes;
     }
 
-    public function setIncomes(?Incomes $incomes): self
+    /*public function setIncomes(?Incomes $incomes): self
     {
         $this->incomes = $incomes;
 
@@ -156,7 +156,7 @@ class Transactions
         }
 
         return $this;
-    }
+    }*/
 
     /**
      * @return Collection|Expenses[]

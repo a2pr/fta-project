@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Transactions;
+use App\Form\TransactionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,11 +19,7 @@ class TransactionController extends AbstractController
 
         $transaction = new Transactions();
 
-        $form = $this->createFormBuilder($transaction)
-            ->add('date', DateTimeType::class)
-            ->add('amount', MoneyType::class)
-            ->add('operation',RadioType::class)
-            ->getForm();
+        $form = $this->createForm(TransactionType::class, $transaction);
 
         $form->handleRequest($request);
         //var_dump($form->getData());
