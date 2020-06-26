@@ -18,10 +18,6 @@ class Transactions
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $Date;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="transactions")
@@ -80,17 +76,6 @@ class Transactions
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->Date;
-    }
-
-    public function setDate(\DateTimeInterface $Date): self
-    {
-        $this->Date = $Date;
-
-        return $this;
-    }
 
     public function getIdUsers(): ?users
     {

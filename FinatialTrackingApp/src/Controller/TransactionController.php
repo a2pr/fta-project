@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Incomes;
 use App\Entity\Transactions;
 use App\Form\TransactionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,21 +19,20 @@ class TransactionController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         $transaction = new Transactions();
-
-        $form = $this->createForm(TransactionType::class, $transaction);
+        $incomes = new Incomes();
+        $transaction->setDtc(new \DateTime());
+        $form = $this->createForm(TransactionType::class);
 
         $form->handleRequest($request);
-        //var_dump($form->getData());
-        if($form->isSubmitted() && $form->isValid()){
-            try{
-                $transTemp= $form->getData();
-                //var_dump($form->getData());
-                    $this->addFlash(
-                        'notice',
-                        'Log in'
-                    );
-                    return $this->redirect('/dashboard');
-            }catch (\Exception $e){
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $transTemp = $form->getData();
+                $this->addFlash(
+                    'notice',
+                    'Log in'
+                );
+                return $this->redirect('/dashboard');
+            } catch (\Exception $e) {
 
             }
         }

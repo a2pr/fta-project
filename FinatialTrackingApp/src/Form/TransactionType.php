@@ -2,14 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Transactions;
-use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TransactionType extends AbstractType
@@ -17,7 +16,9 @@ class TransactionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Date')
+            ->add('Dtc', DateTimeType::class,[
+                'label'=>'Date of entry:'
+            ])
             ->add('amount', MoneyType::class,[
                 'currency'=>false
             ])
@@ -28,21 +29,26 @@ class TransactionType extends AbstractType
                     'USD $'=>'$'
                 ]
             ])
-            ->add('Operation', ChoiceType::class,[
+            ->add('operation', ChoiceType::class,[
                 'choices'=>[
+                    'choose your operation'=>'',
                     'Income'=> '0',
                     'Expenses'=>'1',
                     'Movement'=>'2'
                 ]
-            ])
-            ->add('save', SubmitType::class)
+            ])->add('income',IncomeTransactionType::class)
+            ->add('expenses', ExpensesTransactionType::class)
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            //var_dump($event->getData());
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Transactions::class,
+            /*'data_class' => Transactions::class,*/
         ]);
     }
 }
