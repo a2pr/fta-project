@@ -1,35 +1,43 @@
 {% block transaction %}
     {{ form_start(form) }}
-    <div class="alert-danger">
-        {% set formErrors = form.vars.errors.form.getErrors(true) %}
-        {% if formErrors|length > 0 %}
-            {{ form_errors(form) }}
-        {% endif %}
-    </div>
-    <div class="row my-2">
-        <div class="col">
-            <div class="form-group">
-                {{ form_label(form.Dtc) }}
-                {{ form_widget(form.Dtc.date.year, {'attr': {'class': 'form-control-sm'}}) }}
-                {{ form_widget(form.Dtc.date.month, {'attr': {'class': 'form-control-sm'}}) }}
-                {{ form_widget(form.Dtc.date.day, {'attr': {'class': 'form-control-sm'}}) }}
-                {{ form_widget(form.Dtc.time.hour, {'attr': {'class': 'form-control-sm'}}) }}
-                {{ form_widget(form.Dtc.time.minute, {'attr': {'class': 'form-control-sm'}}) }}
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="alert-danger">
+                {% set formErrors = form.vars.errors.form.getErrors(true) %}
+                {% if formErrors|length > 0 %}
+                    {{ form_errors(form) }}
+                {% endif %}
+            </div>
+            <div class="row my-2">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_label(form.Dtc) }}
+                        {{ form_widget(form.Dtc.date.year, {'attr': {'class': 'form-control-sm'}}) }}
+                        {{ form_widget(form.Dtc.date.month, {'attr': {'class': 'form-control-sm'}}) }}
+                        {{ form_widget(form.Dtc.date.day, {'attr': {'class': 'form-control-sm'}}) }}
+                        {{ form_widget(form.Dtc.time.hour, {'attr': {'class': 'form-control-sm'}}) }}
+                        {{ form_widget(form.Dtc.time.minute, {'attr': {'class': 'form-control-sm'}}) }}
+                    </div>
+                </div>
+                <div class="col">
+                    {{ form_label(form.amount) }}
+                    {{ form_widget(form.amount, {'attr': {'class': 'form-control-sm'}}) }}
+                </div>
+                <div class="col">
+                    {{ form_label(form.money) }}
+                    {{ form_widget(form.money,{'attr': {'class': 'form-control-sm'}}) }}
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-4 col-offset-8">
+                    {{ form_row(form.operation) }}
+                </div>
             </div>
         </div>
-        <div class="col">
-            {{ form_label(form.amount) }}
-            {{ form_widget(form.amount, {'attr': {'class': 'form-control-sm'}}) }}
-        </div>
-        <div class="col">
-            {{ form_label(form.money) }}
-            {{ form_widget(form.money,{'attr': {'class': 'form-control-sm'}}) }}
-        </div>
     </div>
-    <div class="row my-2">
-        <div class="col-4 col-offset-8">
-            {{ form_row(form.operation) }}
-        </div>
-    </div>
+    {% include 'forms/incomesTransactions.html.twig' %}
+    {% include 'forms/expensesTransaction.html.twig' %}
+    {% include 'forms/movementsTransactions.html.twig' %}
+        {{ form_row(form.save, {'attr': {'class': 'btn btn-primary btn-lg'}}) }}
     {{ form_end(form) }}
 {% endblock %}

@@ -5,3 +5,6 @@ twig:
     exception_controller: null
     form_themes:
         - 'forms/transaction.html.twig'
+        - 'forms/expensesTransaction.html.twig'
+        - 'forms/incomesTransactions.html.twig'
+        - 'forms/movementsTransactions.html.twig'

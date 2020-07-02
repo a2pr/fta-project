@@ -19,9 +19,8 @@ class ExpensesTransactionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', HiddenType::class)
             ->add(
-                'Reason',
+                'reason',
                 ChoiceType::class,
                 [
                     'choices' => self::EXPENSES_REASONS

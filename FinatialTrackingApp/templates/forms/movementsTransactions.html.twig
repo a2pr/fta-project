@@ -1,0 +1,39 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <label> {{ form_label(form.movements) }}</label>
+        <div class="row my-2 px-2">
+            <div class="form-group col-sm-4">
+                {{ form_label(form.movements.reason) }}
+                {{ form_widget(form.movements.reason, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group col-sm-8">
+                {{ form_label(form.movements.description) }}
+                {{ form_widget(form.movements.description, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group col-sm-3">
+                {{ form_label(form.movements.amountOutput) }}
+                {{ form_widget(form.movements.amountOutput, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group col-sm-4">
+                {{ form_label(form.movements.moneyOutput) }}
+                {{ form_widget(form.movements.moneyOutput, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group col-sm-4">
+                {{ form_label(form.movements.banksOutput) }}
+                {{ form_widget(form.movements.banksOutput, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group col-sm-3">
+                {{ form_label(form.movements.amountArriving) }}
+                {{ form_widget(form.movements.amountArriving, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group col-sm-4">
+                {{ form_label(form.movements.moneyArriving) }}
+                {{ form_widget(form.movements.moneyArriving, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group col-sm-4">
+                {{ form_label(form.movements.banksArriving) }}
+                {{ form_widget(form.movements.banksArriving, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+</div>

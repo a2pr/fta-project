@@ -22,7 +22,7 @@ class TransactionController extends AbstractController
         $incomes = new Incomes();
         $transaction->setDtc(new \DateTime());
         $form = $this->createForm(TransactionType::class);
-
+/*dump($form->createView());die;*/
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
