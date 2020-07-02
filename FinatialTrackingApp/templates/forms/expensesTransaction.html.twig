@@ -1,0 +1,25 @@
+<label> {{ form_label(form.expenses) }}</label>
+<div class="row my-2 px-2">
+        <div class="form-group col-sm-3">
+            {{ form_label(form.expenses.reason) }}
+            {{ form_widget(form.expenses.reason, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-6">
+            {{ form_label(form.expenses.description) }}
+            {{ form_widget(form.expenses.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-2">
+            {{ form_label(form.expenses.banks) }}
+            {{ form_widget(form.expenses.banks, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-2">
+            {{ form_label(form.expenses.funds) }}
+            {{ form_widget(form.expenses.funds, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-2">
+            {{ form_label(form.expenses.subFunds) }}
+            {{ form_widget(form.expenses.subFunds, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+
+</div>

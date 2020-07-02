@@ -1,0 +1,22 @@
+<div class="row my-2 px-2">
+        <div class="form-group col-sm-3">
+                {{ form_label(form.income.reason) }}
+                {{ form_widget(form.income.reason, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-6">
+                {{ form_label(form.income.description) }}
+                {{ form_widget(form.income.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-2">
+                {{ form_label(form.income.banks) }}
+                {{ form_widget(form.income.banks, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-2">
+                {{ form_label(form.income.funds) }}
+                {{ form_widget(form.income.funds, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-sm-2">
+                {{ form_label(form.income.subFunds) }}
+                {{ form_widget(form.income.subFunds, {'attr': {'class': 'form-control'}}) }}
+        </div>
+</div>

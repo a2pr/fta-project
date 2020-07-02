@@ -31,5 +31,9 @@
             {{ form_row(form.operation) }}
         </div>
     </div>
+    {{ form_label(form.income) }}
+    {% include 'forms/incomesTransactions.html.twig' %}
+    {% include 'forms/expensesTransaction.html.twig' %}
+
     {{ form_end(form) }}
 {% endblock %}
