@@ -16,3 +16,6 @@
 ###< symfony/phpunit-bridge ###
 /.env.local.env
 .idea/*
+
+##node modules
+/node_modules/
