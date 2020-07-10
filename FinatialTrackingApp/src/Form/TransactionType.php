@@ -31,12 +31,14 @@ class TransactionType extends AbstractType
                 ]
             ])
             ->add('operation', ChoiceType::class,[
+                'attr' => ['id' => 'operationType'],
                 'choices'=>[
                     'choose your operation'=>'',
                     'Income'=> '0',
                     'Expenses'=>'1',
                     'Movement'=>'2'
-                ]
+                ],
+
             ])->add('income',IncomeTransactionType::class)
             ->add('expenses', ExpensesTransactionType::class)
             ->add('movements', MovementsTransactionType::class)

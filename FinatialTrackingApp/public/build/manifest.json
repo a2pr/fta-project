@@ -1,4 +1,7 @@
 {
+  "build/app.css": "/build/app.css",
   "build/app.js": "/build/app.js",
-  "build/runtime.js": "/build/runtime.js"
+  "build/runtime.js": "/build/runtime.js",
+  "build/transactionForm.css": "/build/transactionForm.css",
+  "build/transactionForm.js": "/build/transactionForm.js"
 }
