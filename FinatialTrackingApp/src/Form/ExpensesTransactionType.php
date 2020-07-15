@@ -27,7 +27,7 @@ class ExpensesTransactionType extends AbstractType
                 ]
             )
             ->add('description', TextType::class)
-            ->add('banks', ChoiceType::class, [])/*Populate banks by customer adding*/
+            ->add('banks', ChoiceType::class)/*Populate banks by customer adding*/
             ->add('funds', ChoiceType::class)
             ->add('subFunds', ChoiceType::class) /*create a form type for each one ?*/
         ;

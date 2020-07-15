@@ -18,7 +18,8 @@ class TransactionType extends AbstractType
     {
         $builder
             ->add('Dtc', DateTimeType::class,[
-                'label'=>'Date of entry:'
+                'label'=>'Date of entry:',
+                'data' => new \DateTime()
             ])
             ->add('amount', MoneyType::class,[
                 'currency'=>false

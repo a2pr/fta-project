@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Incomes;
 use App\Entity\Transactions;
+use App\Entity\Users;
 use App\Form\TransactionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,9 +23,11 @@ class TransactionController extends AbstractController
         $incomes = new Incomes();
         $transaction->setDtc(new \DateTime());
         $form = $this->createForm(TransactionType::class);
-/*dump($form->createView());die;*/
+
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            dump($request);die;
             try {
                 $transTemp = $form->getData();
                 $this->addFlash(
