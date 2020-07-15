@@ -2,6 +2,7 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
+    {% set user = app.session.get('user') %}
     <div class="row pt-4" style="margin-top: 55px">
         <div class="col-3">
             <div class="container">
@@ -35,6 +36,9 @@
         <div class="col-8">
             <div class="container mt-4">
                 <h1>DashBoard</h1>
+                {% if user %}
+                <h2>Hello {{ user['name'] }}!</h2>
+                {% endif %}
                 <img src="https://dummyimage.com/600x400/000/fff&text=Graphic+image" alt=""/>
                 <br/><br/><br/>
                 <div>

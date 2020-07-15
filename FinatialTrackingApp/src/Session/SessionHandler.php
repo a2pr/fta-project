@@ -19,7 +19,7 @@ class SessionHandler
 
     public function setUserSession(Users $user)
     {
-        $this->session->set('userId', $user->getId());
+        $this->session->set('user', ['id' => $user->getId(), 'email' => $user->getEmail(), 'name' => $user->getName()]);
     }
 
     public function getSession(): SessionInterface
@@ -32,5 +32,8 @@ class SessionHandler
         return $this->session->get('userId');
     }
 
-
+    public function removeSession()
+    {
+        $this->session->clear();
+    }
 }
