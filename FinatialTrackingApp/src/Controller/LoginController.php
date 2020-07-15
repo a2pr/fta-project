@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Users;
-use App\Repository\UsersRepository;
+use App\Form\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,27 +12,25 @@ class LoginController extends AbstractController
 {
     /**
      * @Route("/login", name="login")
+     * @throws \Exception
      */
-    public function index( Request $request)
+    public function index(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
         $userRepo = $entityManager->getRepository(Users::class);
 
         $user = new Users();
-        $form = $this->createFormBuilder($user)
-            ->add('email', EmailType::class)
-            ->add('password', PasswordType::class)
-            ->getForm();
+        $form = $this->createForm(LoginType::class, $user);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            try{
-                $userTemp= $form->getData();
-                $sessionUser=  $userRepo->findUserByLogin($userTemp);
+            try {
+                $userTemp = $form->getData();
+                $sessionUser = $userRepo->findUserByLogin($userTemp);
 
-                if($sessionUser instanceof Users){
+                if ($sessionUser instanceof Users) {
                     $this->addFlash(
                         'notice',
                         'Log in'
@@ -42,14 +38,14 @@ class LoginController extends AbstractController
                     return $this->redirect('/dashboard');
                 }
 
-            }catch (\Exception $e){
-
+            } catch (\Exception $e) {
+                throw $e;
             }
         }
         return $this->render(
             'login/index.html.twig',
             [
-             'form'=>$form->createView()
+                'form' => $form->createView()
             ]
         );
 
