@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create your FTA account!{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card text-center">
+            <div class="card-body">
+                <h3 class="card-title">Registration</h3>
+                {{ form_start(form) }}
+                <div class="form-error">
+                    {{ form_errors(form) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.password) }}
+                </div>
+
+
+                <button class="btn btn-primary">Log in!</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
