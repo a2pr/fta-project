@@ -27,19 +27,19 @@ class Incomes
     private $Reason;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Funds", inversedBy="incomes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $id_fund;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Subfunds", inversedBy="incomes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $id_SubFunds;
 
