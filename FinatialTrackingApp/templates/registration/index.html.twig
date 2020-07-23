@@ -11,21 +11,34 @@
                 <div class="form-error">
                     {{ form_errors(form) }}
                 </div>
-                <div class="form-group">
-                    {{ form_widget(form.email) }}
+                <div class="input-group flex-nowrap col-sm-6 offset-sm-3 mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >email</span>
+                    </div>
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
                 </div>
-                <div class="form-group">
-                    {{ form_widget(form.name) }}
+                <div class="input-group flex-nowrap col-sm-6 offset-sm-3 mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >FirstName</span>
+                    </div>
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
                 </div>
-                <div class="form-group">
-                    {{ form_widget(form.lastname) }}
+                <div class="input-group flex-nowrap col-sm-6 offset-sm-3 mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >LastName</span>
+                    </div>
+                    {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
                 </div>
-                <div class="form-group">
-                    {{ form_widget(form.password) }}
+                <div class="input-group flex-nowrap col-sm-6 offset-sm-3 mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Password</span>
+                    </div>
+                    {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="col-sm-6 offset-sm-3 ">
+                    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
                 </div>
 
-
-                <button class="btn btn-primary">Log in!</button>
                 {{ form_end(form) }}
             </div>
         </div>
