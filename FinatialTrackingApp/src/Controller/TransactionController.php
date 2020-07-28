@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Incomes;
 use App\Entity\Transactions;
-use App\Entity\Users;
 use App\Form\TransactionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

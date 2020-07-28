@@ -56,13 +56,27 @@ class UsersRepository extends ServiceEntityRepository
      */
     public function findUserByLogin( Users $user): ?Users
     {
-
         $hash= md5($user->getPassword());
         return $this->createQueryBuilder('u')
             ->andWhere('u.email = :val')
             ->andWhere('u.password = :pass')
             ->setParameter('val', $user->getEmail())
             ->setParameter('pass', $hash)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    /**
+     * @param string $email
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findUserByEmail(string $email): ?Users
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :val')
+            ->setParameter('val', $email)
             ->getQuery()
             ->getOneOrNullResult()
             ;
